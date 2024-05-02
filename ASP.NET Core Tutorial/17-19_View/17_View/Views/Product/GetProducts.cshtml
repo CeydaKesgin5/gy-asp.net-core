@@ -1,0 +1,10 @@
+﻿@* @model _17_View.Models.ViewModels.UserProduct
+
+Controllerdan sana şu türde veri gelecek
+<h3> @Model.Product.ProductName</h3>
+<h3> @Model.User.Name</h3>
+*@
+@model ( _17_View.Models.Product p, _17_View.Models.User u)
+
+<h3> @Model.p.ProductName</h3>
+<h3> @Model.u.Name</h3>

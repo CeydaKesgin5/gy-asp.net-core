@@ -1,0 +1,35 @@
+﻿@* modelda tür bildirilir, bildirdiğim türde 'Model' da datayı yakalayaıp ilgili işlemeri gerçekleştiriyoruz. *@
+
+@*@model List<_17_View.Models.Product>
+
+<ul>
+    @foreach (var product in Model)
+    {
+        <li>@product.ProductName</li>
+    }
+</ul>*@
+@*
+<h3>ViewBag</h3>
+<ul>
+    @foreach (var product in ViewBag.products as List<_17_View.Models.Product>)
+    {
+        <li>@product.ProductName</li>
+    }
+</ul>
+
+<h3>ViewData</h3>
+<ul>
+    @foreach (var product in ViewData[products] as List<_17_View.Models.Product>)
+    {
+        <li>@product.ProductName</li>
+    }
+</ul>
+
+<h3>TempData</h3>
+<ul>
+    @foreach (var product in TempData[products] as List<_17_View.Models.Product>)
+    {
+        <li>@product.ProductName</li>
+    }
+</ul>
+*@

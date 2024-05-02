@@ -1,0 +1,22 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model _31_Validation.Models.Product
+
+@*client tabanlı validation yapmamızı sağlar*@
+    <script src="~/jquery/jquery.min.js"></script>
+    <script src="~/jquery-validate/jquery.validate.min.js"></script>
+    <script src="~/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+
+<div asp-validation-summary="All">
+
+</div>
+
+<form asp-action="CreateProduct" asp-controller="Product" method="post"    >
+    <input type="text" asp-for="ProductName" placeholder="Product name" /> 
+    <span asp-validation-for="ProductName"></span> @*bind edilen propery validation'u doğrulanmadığında hata mesajı varsa span'a yazdırılır.*@
+    <br />
+    <input type="number" asp-for="Quantity" placeholder="Quantity" /> <span asp-validation-for="Quantity"></span> <br />
+    <input type="text" asp-for="Email" placeholder="Email" /> <span asp-validation-for="Email"></span> <br />
+
+    <button>Gönder</button>
+</form>

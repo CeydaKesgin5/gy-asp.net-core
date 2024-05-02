@@ -1,0 +1,14 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<form asp-action="CreateProduct asp-controller="Product"
+    method="post">
+    <input type="text" placeholder="Product Name"/
+    <br />
+    <input type="number" placeholder="Quantity" /
+    <br />
+    <button> Ürün Ekle </button>
+
+</form>
+@*bir web uygulamasında form tetiklendiğinde içerisinde inputların değerleri
+    hedef endpointe gönderilir
+*@

@@ -1,0 +1,14 @@
+﻿@addTagHelper *, Microsoft .AspNetCore.Mvc.Taghelpers
+
+@model VeriAlmaYöntemleri.Models.Product
+<form asp_action="VeriAl" asp-controller="Product" method="post">
+    <input asp-for="ProductName" type="text"/> <br />
+    <input asp-for="Quantity" type="text" /> <br />
+    <button>Gönder</button>
+
+</form>
+
+<a asp-action="Index" asp-controller="Home" asp-route-a="ahmet" asp-route-a ="mehmet"
+      asp-route-id="123" asp-route-x="heoheruofhwuog"> content
+
+</a>
