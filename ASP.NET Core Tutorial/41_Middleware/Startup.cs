@@ -1,16 +1,16 @@
-using _40_CustomRoute.Handler;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MiddlewareController.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace _40_CustomRoute
+namespace MiddlewareController
 {
     public class Startup
     {
@@ -41,22 +41,29 @@ namespace _40_CustomRoute
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
+
+            app.Use(async (context, next) =>
+            {
+                Console.WriteLine("start Use Middlieware");
+                await next.Invoke();//kendisinden sonraki middleware'i tetikler.
+                Console.WriteLine("stop Use Middlieware");
+
+            });
+
+            app.Run(async context =>
+            {
+                Console.WriteLine("Run middleware");
+            });
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseHello();
 
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.Map("example-route", async c  =>
-                {
-                    //https://localhost:5001/example-route endpointe gelen herhangi bir istek Controller'dan ziyade direkt olarak buradaki
-                    //cotroller tarafýndan karþýlanacaktýr.
-                });
-
-                endpoints.Map("image/{imageName}", new ImageHandler().Handler(env.WebRootPath));
-                endpoints.Map("example-route", new ExampleHandler().Handler());
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
